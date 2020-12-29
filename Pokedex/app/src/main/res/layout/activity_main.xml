@@ -48,6 +48,7 @@
         android:inputType="text"
         android:drawableStart="@drawable/ic_search"
         android:drawablePadding="10dp"
+        android:focusable="false"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/pokedexDescriptionTxt" />
@@ -56,9 +57,23 @@
         android:id="@+id/pokemonRecycler"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_marginTop="20dp"
+        android:overScrollMode="never"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/searchPokemonEditText" />
+
+    <ProgressBar
+        android:id="@+id/progress_circular"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:elevation="8dp"
+        android:indeterminate="true"
+        android:indeterminateTint="@color/design_default_color_error"
+        app:layout_constraintBottom_toBottomOf="@id/pokemonRecycler"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/pokemonRecycler" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
