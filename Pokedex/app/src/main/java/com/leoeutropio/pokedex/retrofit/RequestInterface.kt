@@ -19,6 +19,6 @@ interface RequestInterface {
     @GET("pokemon/{idNamePokemon}")
     fun getPokemonDetails(
         @Path("idNamePokemon") idNamePokemon: String
-    ): Call<List<PokemonDetails>>
+    ): Call<PokemonDetails>
 
 }

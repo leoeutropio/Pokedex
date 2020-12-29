@@ -39,16 +39,16 @@
         android:layout_marginHorizontal="30dp"
         android:layout_marginTop="16dp"
         android:background="@drawable/edittext_bg"
+        android:drawableStart="@drawable/ic_search"
+        android:drawablePadding="10dp"
+        android:focusable="false"
         android:hint="@string/qual_pokemon"
+        android:inputType="text"
         android:paddingHorizontal="10dp"
         android:paddingVertical="10dp"
         android:textColor="@color/black"
         android:textColorHint="#7f7f7f"
         android:textSize="14sp"
-        android:inputType="text"
-        android:drawableStart="@drawable/ic_search"
-        android:drawablePadding="10dp"
-        android:focusable="false"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/pokedexDescriptionTxt" />
@@ -59,21 +59,33 @@
         android:layout_height="0dp"
         android:layout_marginTop="20dp"
         android:overScrollMode="never"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/progressPaginacao"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/searchPokemonEditText" />
 
     <ProgressBar
-        android:id="@+id/progress_circular"
+        android:id="@+id/progressCircular"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:elevation="8dp"
         android:indeterminate="true"
         android:indeterminateTint="@color/design_default_color_error"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="@id/pokemonRecycler"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@id/pokemonRecycler" />
+
+    <ProgressBar
+        android:id="@+id/progressPaginacao"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginBottom="20dp"
+        android:indeterminate="true"
+        android:indeterminateTint="@color/design_default_color_error"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

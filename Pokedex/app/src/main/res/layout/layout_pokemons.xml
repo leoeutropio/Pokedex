@@ -23,17 +23,6 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="#9DA0AA">
-<!--            <TextView-->
-<!--                android:id="@+id/idPokemon"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginStart="20dp"-->
-<!--                android:layout_marginTop="20dp"-->
-<!--                android:textSize="12sp"-->
-<!--                android:textColor="@color/black"-->
-<!--                android:text="#001"-->
-<!--                app:layout_constraintTop_toTopOf="parent"-->
-<!--                app:layout_constraintStart_toStartOf="parent"/>-->
 
             <TextView
                 android:id="@+id/nomePokemon"
@@ -58,14 +47,5 @@
                 app:layout_constraintBottom_toBottomOf="parent"/>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
-
-<!--    <ImageView-->
-<!--        android:layout_width="100dp"-->
-<!--        android:layout_height="100dp"-->
-<!--        android:src="@drawable/unown"-->
-<!--        android:elevation="4dp"-->
-<!--        app:layout_constraintEnd_toEndOf="@id/cardPokemon"-->
-<!--        app:layout_constraintTop_toTopOf="parent" />-->
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

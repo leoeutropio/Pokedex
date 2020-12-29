@@ -14,7 +14,7 @@
         android:roundIcon="@drawable/pokedexlogo"
         android:supportsRtl="true"
         android:theme="@style/Theme.Pokedex">
-        <activity android:name=".PokemonDetailsActivity"></activity>
+        <activity android:name=".PokemonDetailsActivity"/>
         <activity android:name=".SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
