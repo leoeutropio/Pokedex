@@ -27,11 +27,6 @@ class PokemonAdapter(private val context: Context, var listener: PokemonClickLis
         return pokemons.size
     }
 
-    fun addPokemon(poke: List<Pokemon>) {
-        pokemons.addAll(poke)
-        notifyDataSetChanged()
-    }
-
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val pokemon = pokemons[position]
 
@@ -42,6 +37,21 @@ class PokemonAdapter(private val context: Context, var listener: PokemonClickLis
         holder.cardPokemon.setOnClickListener {
             listener.selectPokemon(pokemon.name)
         }
+    }
+
+    fun clearAdapter(){
+        pokemons.clear()
+        notifyDataSetChanged()
+    }
+
+    fun searchAddPokemon(pokemon: Pokemon) {
+        pokemons.add(pokemon)
+        notifyDataSetChanged()
+    }
+
+    fun addPokemon(poke: List<Pokemon>) {
+        pokemons.addAll(poke)
+        notifyDataSetChanged()
     }
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {

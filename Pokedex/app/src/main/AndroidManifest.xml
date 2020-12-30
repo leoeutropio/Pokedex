@@ -9,12 +9,12 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@drawable/pokedexlogo"
+        android:icon="@drawable/pokedex_img"
         android:label="@string/app_name"
-        android:roundIcon="@drawable/pokedexlogo"
+        android:roundIcon="@drawable/pokedex_img"
         android:supportsRtl="true"
         android:theme="@style/Theme.Pokedex">
-        <activity android:name=".PokemonDetailsActivity"/>
+        <activity android:name=".PokemonDetailsActivity" />
         <activity android:name=".SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

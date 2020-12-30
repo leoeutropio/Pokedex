@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">Pokedex</string>
-    <string name="pokedex">Pokédex</string>
+    <string name="pokedex">Pokedex</string>
     <string name="busque_pokemon">Busque o Pokémon pelo nome ou usando o número da Pokédex</string>
     <string name="qual_pokemon">Qual Pokémon você está procurando?</string>
+    <string name="nenhum_pokemon_encontrado">Nenhum Pokemon encontrado</string>
 </resources>

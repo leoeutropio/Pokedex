@@ -6,6 +6,17 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <!--LinearLayout colocado somente para pegar o focus que o EditText pega ao entrar na tela-->
+    <LinearLayout
+        android:id="@+id/linear"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <TextView
         android:id="@+id/pokedexTitleTxt"
         android:layout_width="0dp"
@@ -41,8 +52,9 @@
         android:background="@drawable/edittext_bg"
         android:drawableStart="@drawable/ic_search"
         android:drawablePadding="10dp"
-        android:focusable="false"
+        android:focusable="auto"
         android:hint="@string/qual_pokemon"
+        android:imeOptions="actionSearch"
         android:inputType="text"
         android:paddingHorizontal="10dp"
         android:paddingVertical="10dp"
@@ -87,5 +99,21 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/nenhumTxt"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="8dp"
+        android:layout_marginTop="40dp"
+        android:text="@string/nenhum_pokemon_encontrado"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@id/pokemonRecycler"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/pokemonRecycler"
+        app:layout_constraintVertical_bias="0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

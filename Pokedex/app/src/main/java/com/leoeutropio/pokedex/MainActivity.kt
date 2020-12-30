@@ -1,13 +1,20 @@
 package com.leoeutropio.pokedex
 
+import android.app.Activity
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.view.inputmethod.EditorInfo
+import android.view.inputmethod.InputMethodManager
+import android.widget.TextView.OnEditorActionListener
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.leoeutropio.pokedex.adapters.PokemonAdapter
+import com.leoeutropio.pokedex.model.Pokemon
+import com.leoeutropio.pokedex.model.PokemonDetails
 import com.leoeutropio.pokedex.model.ResultPokeApi
 import com.leoeutropio.pokedex.retrofit.NetworkUtils
 import com.leoeutropio.pokedex.retrofit.RequestInterface
@@ -41,6 +48,7 @@ class MainActivity : AppCompatActivity() {
             }
 
         })
+
         pokemonRecycler.layoutManager = LinearLayoutManager(this)
         pokemonRecycler.adapter = pokemonAdapter
 
@@ -57,9 +65,27 @@ class MainActivity : AppCompatActivity() {
             }
         })
 
+        searchPokemonEditText.setOnEditorActionListener { v, actionId, event ->
+            if (actionId == EditorInfo.IME_ACTION_SEARCH) {
+                progressCircular.visibility = View.VISIBLE
+                nenhumTxt.visibility = View.GONE
+                hideKeyboard()
+                pokemonAdapter.clearAdapter()
+                if (v.length() == 0) {
+                    getPokemons()
+                } else {
+                    searchPokemon(v.text.toString())
+                }
+                true
+            } else {
+                false
+            }
+        }
+
         progressCircular.visibility = View.VISIBLE
         getPokemons()
     }
+
 
     private fun configRetrofit() {
         retrofitClient = NetworkUtils.getRetrofitInstance()
@@ -85,4 +111,31 @@ class MainActivity : AppCompatActivity() {
         })
     }
 
+    private fun searchPokemon(nameId: String) {
+        val callback = endpoint.getPokemonDetails(nameId)
+        callback.enqueue(object : Callback<PokemonDetails> {
+            override fun onResponse(call: Call<PokemonDetails>, response: Response<PokemonDetails>) {
+                progressCircular.visibility = View.GONE
+                if (response.body() != null) {
+                    val pokemon = Pokemon(response.body()!!.name, "")
+                    pokemonAdapter.searchAddPokemon(pokemon)
+                } else {
+                    nenhumTxt.visibility = View.VISIBLE
+                }
+
+            }
+
+            override fun onFailure(call: Call<PokemonDetails>, t: Throwable) {
+                progressCircular.visibility = View.GONE
+                Toast.makeText(baseContext, t.localizedMessage, Toast.LENGTH_SHORT).show()
+            }
+
+        })
+    }
+
+
+    fun Activity.hideKeyboard() {
+        val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        imm.hideSoftInputFromWindow(this.findViewById<View>(android.R.id.content).windowToken, 0);
+    }
 }
