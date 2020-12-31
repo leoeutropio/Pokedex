@@ -4,4 +4,10 @@
     <string name="busque_pokemon">Busque o Pokémon pelo nome ou usando o número da Pokédex</string>
     <string name="qual_pokemon">Qual Pokémon você está procurando?</string>
     <string name="nenhum_pokemon_encontrado">Nenhum Pokemon encontrado</string>
+    <string name="hp">HP</string>
+    <string name="ataque">Ataque</string>
+    <string name="defesa">Defesa</string>
+    <string name="velocidade">Velocidade</string>
+    <string name="status">Status</string>
+    <string name="habilidades">Habilidades</string>
 </resources>

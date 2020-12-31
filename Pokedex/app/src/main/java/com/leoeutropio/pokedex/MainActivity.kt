@@ -7,7 +7,6 @@ import android.os.Bundle
 import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
-import android.widget.TextView.OnEditorActionListener
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -49,26 +48,27 @@ class MainActivity : AppCompatActivity() {
 
         })
 
-        pokemonRecycler.layoutManager = LinearLayoutManager(this)
-        pokemonRecycler.adapter = pokemonAdapter
+        pokemonRv.layoutManager = LinearLayoutManager(this)
+        pokemonRv.adapter = pokemonAdapter
 
-        pokemonRecycler.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+        pokemonRv.addOnScrollListener(object : RecyclerView.OnScrollListener() {
             override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
                 super.onScrollStateChanged(recyclerView, newState)
                 if (!recyclerView.canScrollVertically(1)) {
                     if (result.next != null) {
                         offset += 20
-                        progressPaginacao.visibility = View.VISIBLE
+                        paginacaoPb.visibility = View.VISIBLE
                         getPokemons()
                     }
                 }
             }
         })
 
-        searchPokemonEditText.setOnEditorActionListener { v, actionId, event ->
+        searchPokemonEt.setOnEditorActionListener { v, actionId, event ->
             if (actionId == EditorInfo.IME_ACTION_SEARCH) {
-                progressCircular.visibility = View.VISIBLE
-                nenhumTxt.visibility = View.GONE
+                offset = 0
+                circularPb.visibility = View.VISIBLE
+                nenhumTv.visibility = View.GONE
                 hideKeyboard()
                 pokemonAdapter.clearAdapter()
                 if (v.length() == 0) {
@@ -82,7 +82,7 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        progressCircular.visibility = View.VISIBLE
+        circularPb.visibility = View.VISIBLE
         getPokemons()
     }
 
@@ -96,15 +96,15 @@ class MainActivity : AppCompatActivity() {
         val callback = endpoint.getPokemon(limit, offset.toString())
         callback.enqueue(object : Callback<ResultPokeApi> {
             override fun onResponse(call: Call<ResultPokeApi>, response: Response<ResultPokeApi>) {
-                progressPaginacao.visibility = View.GONE
-                progressCircular.visibility = View.GONE
+                paginacaoPb.visibility = View.GONE
+                circularPb.visibility = View.GONE
                 result = response.body()!!
                 pokemonAdapter.addPokemon(result.results)
             }
 
             override fun onFailure(call: Call<ResultPokeApi>, t: Throwable) {
-                progressPaginacao.visibility = View.GONE
-                progressCircular.visibility = View.GONE
+                paginacaoPb.visibility = View.GONE
+                circularPb.visibility = View.GONE
                 Toast.makeText(baseContext, t.localizedMessage, Toast.LENGTH_SHORT).show()
             }
 
@@ -114,19 +114,22 @@ class MainActivity : AppCompatActivity() {
     private fun searchPokemon(nameId: String) {
         val callback = endpoint.getPokemonDetails(nameId)
         callback.enqueue(object : Callback<PokemonDetails> {
-            override fun onResponse(call: Call<PokemonDetails>, response: Response<PokemonDetails>) {
-                progressCircular.visibility = View.GONE
+            override fun onResponse(
+                call: Call<PokemonDetails>,
+                response: Response<PokemonDetails>
+            ) {
+                circularPb.visibility = View.GONE
                 if (response.body() != null) {
                     val pokemon = Pokemon(response.body()!!.name, "")
                     pokemonAdapter.searchAddPokemon(pokemon)
                 } else {
-                    nenhumTxt.visibility = View.VISIBLE
+                    nenhumTv.visibility = View.VISIBLE
                 }
 
             }
 
             override fun onFailure(call: Call<PokemonDetails>, t: Throwable) {
-                progressCircular.visibility = View.GONE
+                circularPb.visibility = View.GONE
                 Toast.makeText(baseContext, t.localizedMessage, Toast.LENGTH_SHORT).show()
             }
 
@@ -134,8 +137,8 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-    fun Activity.hideKeyboard() {
+    private fun Activity.hideKeyboard() {
         val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-        imm.hideSoftInputFromWindow(this.findViewById<View>(android.R.id.content).windowToken, 0);
+        imm.hideSoftInputFromWindow(this.findViewById<View>(android.R.id.content).windowToken, 0)
     }
 }

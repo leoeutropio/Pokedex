@@ -18,7 +18,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/pokedexTitleTxt"
+        android:id="@+id/pokedexTitleTv"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="30dp"
@@ -32,7 +32,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/pokedexDescriptionTxt"
+        android:id="@+id/pokedexDescriptionTv"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="30dp"
@@ -41,10 +41,10 @@
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/pokedexTitleTxt" />
+        app:layout_constraintTop_toBottomOf="@id/pokedexTitleTv" />
 
     <EditText
-        android:id="@+id/searchPokemonEditText"
+        android:id="@+id/searchPokemonEt"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="30dp"
@@ -63,33 +63,33 @@
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/pokedexDescriptionTxt" />
+        app:layout_constraintTop_toBottomOf="@id/pokedexDescriptionTv" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/pokemonRecycler"
+        android:id="@+id/pokemonRv"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="20dp"
         android:overScrollMode="never"
-        app:layout_constraintBottom_toTopOf="@id/progressPaginacao"
+        app:layout_constraintBottom_toTopOf="@id/paginacaoPb"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/searchPokemonEditText" />
+        app:layout_constraintTop_toBottomOf="@id/searchPokemonEt" />
 
     <ProgressBar
-        android:id="@+id/progressCircular"
+        android:id="@+id/circularPb"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:indeterminate="true"
         android:indeterminateTint="@color/design_default_color_error"
         android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="@id/pokemonRecycler"
+        app:layout_constraintBottom_toBottomOf="@id/pokemonRv"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/pokemonRecycler" />
+        app:layout_constraintTop_toTopOf="@id/pokemonRv" />
 
     <ProgressBar
-        android:id="@+id/progressPaginacao"
+        android:id="@+id/paginacaoPb"
         android:layout_width="20dp"
         android:layout_height="20dp"
         android:layout_marginBottom="20dp"
@@ -101,7 +101,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:id="@+id/nenhumTxt"
+        android:id="@+id/nenhumTv"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="8dp"
@@ -110,10 +110,10 @@
         android:textAlignment="center"
         android:textSize="20sp"
         android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="@id/pokemonRecycler"
+        app:layout_constraintBottom_toBottomOf="@id/pokemonRv"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/pokemonRecycler"
+        app:layout_constraintTop_toTopOf="@id/pokemonRv"
         app:layout_constraintVertical_bias="0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

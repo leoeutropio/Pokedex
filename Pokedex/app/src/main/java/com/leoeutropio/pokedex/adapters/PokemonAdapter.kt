@@ -13,7 +13,7 @@ import java.util.*
 import kotlin.collections.ArrayList
 
 
-class PokemonAdapter(private val context: Context, var listener: PokemonClickListener) :
+class PokemonAdapter(private val context: Context, private var listener: PokemonClickListener) :
     RecyclerView.Adapter<PokemonAdapter.ViewHolder>() {
 
     private val pokemons = ArrayList<Pokemon>()
@@ -30,7 +30,9 @@ class PokemonAdapter(private val context: Context, var listener: PokemonClickLis
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val pokemon = pokemons[position]
 
-        val nome: String = pokemon.name.substring(0, 1).toUpperCase(Locale.getDefault()) + pokemon.name.substring(1).toLowerCase(Locale.getDefault())
+        val nome: String = pokemon.name.substring(0, 1)
+            .toUpperCase(Locale.getDefault()) + pokemon.name.substring(1)
+            .toLowerCase(Locale.getDefault())
         holder.nome.text = nome
 
 
@@ -39,7 +41,7 @@ class PokemonAdapter(private val context: Context, var listener: PokemonClickLis
         }
     }
 
-    fun clearAdapter(){
+    fun clearAdapter() {
         pokemons.clear()
         notifyDataSetChanged()
     }
@@ -55,8 +57,8 @@ class PokemonAdapter(private val context: Context, var listener: PokemonClickLis
     }
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val nome: TextView = itemView.findViewById(R.id.nomePokemon)
-        val cardPokemon: CardView = itemView.findViewById(R.id.cardPokemon)
+        val nome: TextView = itemView.findViewById(R.id.nomePokemonTv)
+        val cardPokemon: CardView = itemView.findViewById(R.id.pokemonCv)
     }
 
     interface PokemonClickListener {

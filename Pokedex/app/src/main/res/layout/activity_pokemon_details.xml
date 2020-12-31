@@ -7,49 +7,196 @@
     tools:context=".PokemonDetailsActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/previewCl"
         android:layout_width="0dp"
-        android:layout_height="250dp"
-        android:background="#62B957"
-        app:layout_constraintTop_toTopOf="parent"
+        android:layout_height="wrap_content"
+        android:background="#d3d3d3"
+        android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintTop_toTopOf="parent">
+
         <ImageView
-            android:id="@+id/imgPokemon"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_marginTop="80dp"
-            android:layout_marginStart="40dp"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            android:id="@+id/pokemonImg"
+            android:layout_width="140dp"
+            android:layout_height="140dp"
+            android:layout_marginTop="50dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/idPokemon"
+            android:id="@+id/idPokemonTv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:layout_marginStart="20dp"
-            android:textSize="16sp"
-            tools:text="#001"
             android:textColor="#484848"
-            app:layout_constraintTop_toTopOf="@id/imgPokemon"
-            app:layout_constraintStart_toEndOf="@id/imgPokemon" />
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="@id/pokemonImg"
+            app:layout_constraintStart_toStartOf="@id/pokemonImg"
+            app:layout_constraintTop_toBottomOf="@id/pokemonImg"
+            tools:text="#001" />
 
         <TextView
-            android:id="@+id/nomePokemon"
+            android:id="@+id/nomePokemonTv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:textSize="30sp"
-            tools:text="Unown"
+            android:layout_marginBottom="20dp"
             android:textColor="#FFFFFF"
+            android:textSize="30sp"
             android:textStyle="bold"
-            app:layout_constraintTop_toBottomOf="@id/idPokemon"
-            app:layout_constraintStart_toEndOf="@id/imgPokemon" />
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/pokemonImg"
+            app:layout_constraintStart_toStartOf="@id/pokemonImg"
+            app:layout_constraintTop_toBottomOf="@id/idPokemonTv"
+            tools:text="Unown" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/statsPokemonCl"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/previewCl">
+
+        <TextView
+            android:id="@+id/statsTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:textSize="20sp"
+            android:text="@string/status"
+            android:textColor="@color/black"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="@id/hpTv"
+            app:layout_constraintEnd_toEndOf="@id/hpNumberTv"/>
+
+        <TextView
+            android:id="@+id/hpTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="20dp"
+            android:text="@string/hp"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/statsTv" />
+
+        <TextView
+            android:id="@+id/hpNumberTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="20dp"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            app:layout_constraintStart_toEndOf="@id/velocidadeTv"
+            app:layout_constraintTop_toBottomOf="@id/statsTv"
+            tools:text="20" />
+
+        <TextView
+            android:id="@+id/ataqueTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/ataque"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/hpTv" />
+
+        <TextView
+            android:id="@+id/ataqueNumberTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="16dp"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            app:layout_constraintStart_toEndOf="@id/velocidadeTv"
+            app:layout_constraintTop_toBottomOf="@id/hpTv"
+            tools:text="20" />
+
+        <TextView
+            android:id="@+id/defesaTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/defesa"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ataqueNumberTv" />
+
+        <TextView
+            android:id="@+id/defesaNumberTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="16dp"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            app:layout_constraintStart_toEndOf="@id/velocidadeTv"
+            app:layout_constraintTop_toBottomOf="@id/ataqueNumberTv"
+            tools:text="20" />
+
+        <TextView
+            android:id="@+id/velocidadeTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/velocidade"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/defesaTv" />
+
+        <TextView
+            android:id="@+id/velocidadeNumberTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="16dp"
+            android:textColor="@color/black"
+            app:layout_constraintStart_toEndOf="@id/velocidadeTv"
+            app:layout_constraintTop_toBottomOf="@id/defesaTv"
+            tools:text="20" />
+
+        <TextView
+            android:id="@+id/habilidadesTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:textSize="20sp"
+            android:text="@string/habilidades"
+            android:textColor="@color/black"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="@id/habilidadesRv"
+            app:layout_constraintEnd_toEndOf="@id/habilidadesRv"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/habilidadesRv"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="20dp"
+            android:textSize="14sp"
+            android:overScrollMode="never"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/velocidadeNumberTv"
+            app:layout_constraintTop_toBottomOf="@id/habilidadesTv" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
     <ProgressBar
-        android:id="@+id/progressCircular"
+        android:id="@+id/circularPb"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:elevation="8dp"
@@ -61,5 +208,14 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <ImageView
+        android:id="@+id/backArrowImg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="30dp"
+        android:src="@drawable/ic_back"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
